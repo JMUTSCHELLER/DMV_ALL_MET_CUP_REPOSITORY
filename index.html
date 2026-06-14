@@ -376,8 +376,100 @@
   .player-card-note { font-size: 13px; color: var(--gray); margin-top: 4px; }
   .players-cta { margin-top: 8px; }
 
+  /* ── ROSTER TABS ── */
+  .roster-tabs {
+    display: flex; gap: 12px; margin-bottom: 36px; justify-content: center;
+  }
+  .roster-tab-btn {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    padding: 10px 32px; border-radius: 4px; cursor: pointer;
+    border: 2px solid var(--border); background: transparent; color: var(--gray-light);
+    transition: all 0.2s;
+  }
+  .roster-tab-btn.active.pub { background: var(--blue); border-color: var(--blue); color: var(--white); }
+  .roster-tab-btn.active.priv { background: var(--red); border-color: var(--red); color: var(--white); }
+  .roster-panel { display: none; }
+  .roster-panel.active { display: block; }
+
+  /* ── ROSTER CARDS ── */
+  .roster-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 4px;
+  }
+  .rc {
+    background: var(--dark-3); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px 14px;
+    transition: transform 0.2s, border-color 0.2s;
+  }
+  .rc:hover { transform: translateY(-3px); border-color: rgba(200,16,46,0.35); }
+  .rc-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 17px; font-weight: 800; color: var(--white); line-height: 1.2; margin-bottom: 3px;
+  }
+  .rc-loc { font-size: 11px; color: var(--gray); margin-bottom: 9px; }
+  .rc-pos { display: flex; gap: 5px; flex-wrap: wrap; margin-bottom: 9px; }
+  .pos {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+    padding: 2px 7px; border-radius: 3px;
+  }
+  .pos.p { background: var(--red); color: var(--white); }
+  .pos.s { background: rgba(255,255,255,0.08); color: var(--gray-light); }
+  .rc-honor { font-size: 11px; color: var(--gold-light); line-height: 1.5; }
+  .rc-commit { font-size: 11px; color: var(--gray-light); margin-top: 5px; font-style: italic; }
+  .roster-section-label {
+    grid-column: 1 / -1;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gray); border-bottom: 1px solid var(--border);
+    padding-bottom: 8px; margin-top: 12px;
+  }
+  @media(max-width: 900px) { .roster-grid { grid-template-columns: repeat(2,1fr); } }
+  @media(max-width: 480px) { .roster-grid { grid-template-columns: 1fr; } }
+
   /* ── COACHES ── */
   .coaches-section { background: var(--dark); }
+  .coaches-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 32px 0 40px;
+    font-family: 'Barlow Condensed', sans-serif;
+  }
+  .coaches-table thead tr {
+    background: var(--blue);
+  }
+  .coaches-table th {
+    padding: 12px 18px;
+    text-align: left;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    font-weight: 700;
+  }
+  .coaches-table tbody tr {
+    border-bottom: 1px solid var(--border);
+    transition: background 0.2s;
+  }
+  .coaches-table tbody tr:hover { background: rgba(255,255,255,0.04); }
+  .coaches-table td {
+    padding: 14px 18px;
+    font-size: 17px;
+    color: var(--white);
+  }
+  .coaches-table td.coach-role { color: var(--gray-light); }
+  .coaches-table td.coach-div {
+    font-weight: 700;
+    color: var(--gold-light);
+  }
+  .coaches-more {
+    text-align: center;
+    color: var(--gray);
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+  }
   .coaches-coming {
     margin-top: 44px;
     background: linear-gradient(135deg, rgba(0,40,104,0.25) 0%, rgba(13,20,33,0.6) 50%, rgba(200,16,46,0.18) 100%);
@@ -766,6 +858,7 @@
     <li><a href="#players">Players</a></li>
     <li><a href="#coaches">Coaches</a></li>
     <li><a href="#gameday">Gameday</a></li>
+    <li><a href="#sponsors">Sponsors</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#tickets" class="nav-cta">Buy Tickets</a></li>
   </ul>
@@ -913,10 +1006,16 @@
 <section class="players-section block fade-in" id="players">
   <div class="section-inner">
     <div class="section-eyebrow">Roster</div>
-    <h2 class="section-title">Featured Players</h2>
-    <p class="section-body">Rosters for both squads are being finalized. Full player selections will be announced ahead of game day.</p>
-    <div class="players-grid">
-      <div class="player-card">
+    <h2 class="section-title">Players</h2>
+    <p class="section-body" style="margin-bottom:36px;">The DMV's best — selected from public and private programs across DC, Maryland, and Virginia.</p>
+    <div class="roster-tabs">
+      <button class="roster-tab-btn pub" onclick="switchTab('public')">🔵 Public Schools</button>
+      <button class="roster-tab-btn priv active" onclick="switchTab('private')">🔴 Private Schools</button>
+    </div>
+
+    <!-- PUBLIC PANEL -->
+    <div class="roster-panel" id="panel-public">
+      <div class="player-card" style="max-width:420px;margin:0 auto;">
         <div class="player-card-top public">
           <div class="player-card-icon">🔵</div>
           <span class="player-team-tag public">Public</span>
@@ -927,21 +1026,135 @@
           <div class="player-card-note">Roster announcement pending</div>
         </div>
       </div>
-      <div class="player-card">
-        <div class="player-card-top private">
-          <div class="player-card-icon">🔴</div>
-          <span class="player-team-tag private">Private</span>
+    </div>
+
+    <!-- PRIVATE PANEL -->
+    <div class="roster-panel active" id="panel-private">
+      <div class="roster-grid">
+
+        <div class="roster-section-label">Goalkeepers</div>
+        <div class="rc">
+          <div class="rc-name">Connor Walitsky-Oliver</div>
+          <div class="rc-loc">Chevy Chase, MD</div>
+          <div class="rc-pos"><span class="pos p">GK</span></div>
+          <div class="rc-honor">DCSAA State Champion 2025 · DCSAA All-State 2nd Team</div>
         </div>
-        <div class="player-card-body">
-          <div class="player-card-team-name">Private Schools Team</div>
-          <div class="player-card-status">Coming Soon</div>
-          <div class="player-card-note">Roster announcement pending</div>
+        <div class="rc">
+          <div class="rc-name">William Eastright</div>
+          <div class="rc-loc">Washington, D.C.</div>
+          <div class="rc-pos"><span class="pos p">GK</span></div>
+          <div class="rc-honor">3× Washington Post All-Met · 3× DCSAA All-State · DCSAA State Player of the Year</div>
+          <div class="rc-commit">→ Washington and Lee University</div>
         </div>
+
+        <div class="roster-section-label">Defenders</div>
+        <div class="rc">
+          <div class="rc-name">Avery Christen</div>
+          <div class="rc-loc">Reston, VA</div>
+          <div class="rc-pos"><span class="pos p">CB</span><span class="pos s">ST</span></div>
+          <div class="rc-honor">All-Met 1st Team · Player of the Year (The Heights)</div>
+          <div class="rc-commit">→ Mount St. Mary's University</div>
+        </div>
+        <div class="rc">
+          <div class="rc-name">Campbell Knisely</div>
+          <div class="rc-loc">McLean, VA</div>
+          <div class="rc-pos"><span class="pos p">RB</span><span class="pos s">CDM</span></div>
+          <div class="rc-honor">1st Team All-Met · All-State 1st · All-WCAC 1st</div>
+        </div>
+        <div class="rc">
+          <div class="rc-name">Jackson Gresham</div>
+          <div class="rc-loc">Darnestown, MD</div>
+          <div class="rc-pos"><span class="pos p">CB</span><span class="pos s">LB</span></div>
+          <div class="rc-honor">All-American · All-Met 1st Team · All-WCAC Player of the Year</div>
+          <div class="rc-commit">→ Lehigh University</div>
+        </div>
+        <div class="rc">
+          <div class="rc-name">Jacob Romhilt</div>
+          <div class="rc-loc">McLean, VA</div>
+          <div class="rc-pos"><span class="pos p">CB</span><span class="pos s">RB</span></div>
+          <div class="rc-honor">All-Met · All-State · All-Conference</div>
+        </div>
+        <div class="rc">
+          <div class="rc-name">Oliver Saltiel</div>
+          <div class="rc-loc">Arlington, VA</div>
+          <div class="rc-pos"><span class="pos p">RB</span><span class="pos s">RW</span></div>
+          <div class="rc-honor">All-Conference IAC · ODP East Regional · ECNL National Select Game</div>
+        </div>
+        <div class="rc">
+          <div class="rc-name">Sullivan Carter</div>
+          <div class="rc-loc">Vienna, VA</div>
+          <div class="rc-pos"><span class="pos p">RB</span><span class="pos s">LW</span></div>
+          <div class="rc-honor">All-State 1st Team · All-Conference 1st Team</div>
+          <div class="rc-commit">→ William &amp; Mary</div>
+        </div>
+
+        <div class="roster-section-label">Midfielders</div>
+        <div class="rc">
+          <div class="rc-name">Charlie Waller</div>
+          <div class="rc-loc">Alexandria, VA</div>
+          <div class="rc-pos"><span class="pos p">CAM</span><span class="pos s">ST</span></div>
+          <div class="rc-honor">All-WCAC Player of the Year · All-Met 1st Team</div>
+          <div class="rc-commit">→ Georgetown University (D1)</div>
+        </div>
+        <div class="rc">
+          <div class="rc-name">Dijon Fosu</div>
+          <div class="rc-loc">Silver Spring, MD</div>
+          <div class="rc-pos"><span class="pos p">CM</span><span class="pos s">CDM</span></div>
+          <div class="rc-honor">All-Met 1st Team · All-State 1st · All-WCAC 1st</div>
+          <div class="rc-commit">→ Yale University</div>
+        </div>
+        <div class="rc">
+          <div class="rc-name">Julian Antezana</div>
+          <div class="rc-loc">Fairfax, VA</div>
+          <div class="rc-pos"><span class="pos p">CM</span><span class="pos s">CDM</span></div>
+          <div class="rc-honor">All-Met 2nd Team · WCAC 1st Team · All-State 1st</div>
+          <div class="rc-commit">→ Hamilton College</div>
+        </div>
+        <div class="rc">
+          <div class="rc-name">Luke Canady</div>
+          <div class="rc-loc">Falls Church, VA</div>
+          <div class="rc-pos"><span class="pos p">CM</span><span class="pos s">CAM</span></div>
+          <div class="rc-honor">All-Met Honorable Mention · All-WCAC 1st Team</div>
+        </div>
+        <div class="rc">
+          <div class="rc-name">Omar Medrano</div>
+          <div class="rc-loc">Takoma Park</div>
+          <div class="rc-pos"><span class="pos p">CM</span><span class="pos s">LW</span></div>
+          <div class="rc-commit">→ Loyola University Maryland</div>
+        </div>
+
+        <div class="roster-section-label">Attackers</div>
+        <div class="rc">
+          <div class="rc-name">Alessandro Marquez</div>
+          <div class="rc-loc">Silver Spring, MD</div>
+          <div class="rc-pos"><span class="pos p">ST</span><span class="pos s">CAM</span></div>
+          <div class="rc-honor">WCAC 1st Team · All-Met Honorable Mention</div>
+          <div class="rc-commit">→ Catholic University</div>
+        </div>
+        <div class="rc">
+          <div class="rc-name">Enzo Sosa</div>
+          <div class="rc-loc">Rockville, MD</div>
+          <div class="rc-pos"><span class="pos p">ST</span><span class="pos s">LW</span></div>
+          <div class="rc-honor">WCAC 1st Team · All-Met Honorable Mention</div>
+          <div class="rc-commit">→ UMBC</div>
+        </div>
+        <div class="rc">
+          <div class="rc-name">Shawn Estelle Jr</div>
+          <div class="rc-loc">Bowie, MD</div>
+          <div class="rc-pos"><span class="pos p">LW</span><span class="pos s">LB</span></div>
+          <div class="rc-honor">1st Team All-WCAC</div>
+          <div class="rc-commit">→ Bloomsburg University</div>
+        </div>
+        <div class="rc">
+          <div class="rc-name">Trey Tam</div>
+          <div class="rc-loc">Ho Chi Minh City</div>
+          <div class="rc-pos"><span class="pos p">LW</span><span class="pos s">CAM</span></div>
+          <div class="rc-honor">All-Met · All-MAC</div>
+        </div>
+
       </div>
     </div>
-    <div class="players-cta">
-      <a href="#contact" class="btn-outline-gold">Request Roster Access</a>
-    </div>
+
   </div>
 </section>
 
@@ -951,10 +1164,41 @@
     <div class="section-eyebrow">College Coaches</div>
     <h2 class="section-title">Coaches Attending</h2>
     <p class="section-body">College programs from across the country will be in attendance to scout the DMV's top talent.</p>
+    <table class="coaches-table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>School</th>
+          <th>Role</th>
+          <th>Division</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Nate Kalin</td>
+          <td>Marymount University</td>
+          <td class="coach-role">Head Coach</td>
+          <td class="coach-div">Division III</td>
+        </tr>
+        <tr>
+          <td>Tommy DiNuzzo</td>
+          <td>Hampden-Sydney College</td>
+          <td class="coach-role">Head Coach</td>
+          <td class="coach-div">Division III</td>
+        </tr>
+        <tr>
+          <td>Jefferson Kinney</td>
+          <td>Virginia Tech</td>
+          <td class="coach-role">Assistant Coach</td>
+          <td class="coach-div">Division I</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="coaches-more">More programs to be announced ahead of game day</div>
     <div class="coaches-coming">
       <div class="coaches-coming-icon">🎓</div>
-      <div class="coaches-coming-title">All College Coaches — Coming Soon</div>
-      <div class="coaches-coming-sub">Confirmed programs will be announced ahead of game day</div>
+      <div class="coaches-coming-title">Are you a college coach?</div>
+      <div class="coaches-coming-sub">Register for complimentary admission and scouting access</div>
       <a href="https://forms.gle/54N4jot9EAtY7MELA" target="_blank" rel="noopener" class="btn-coach-reg">College Coach Registration</a>
     </div>
   </div>
@@ -1123,6 +1367,30 @@
         </div>
         <div class="sponsor-name">NXT Level Futbol</div>
       </a>
+      <a href="https://www.paradigmfc.org/" target="_blank" rel="noopener" class="sponsor-tile">
+        <div class="sponsor-logo-plate">
+          <img src="images/sponsor-paradigm-fc.png" alt="Paradigm FC">
+        </div>
+        <div class="sponsor-name">Paradigm FC</div>
+      </a>
+      <a href="https://elpollorico.com/" target="_blank" rel="noopener" class="sponsor-tile">
+        <div class="sponsor-logo-plate">
+          <img src="images/sponsor-el-pollo-rico.png" alt="El Pollo Rico">
+        </div>
+        <div class="sponsor-name">El Pollo Rico</div>
+      </a>
+      <a href="https://ropw.net/" target="_blank" rel="noopener" class="sponsor-tile">
+        <div class="sponsor-logo-plate">
+          <img src="images/sponsor-ramp.png" alt="RAMP Optimal Performance & Wellness">
+        </div>
+        <div class="sponsor-name">RAMP Optimal Performance &amp; Wellness</div>
+      </a>
+      <a href="https://www.orthovirginia.com/" target="_blank" rel="noopener" class="sponsor-tile">
+        <div class="sponsor-logo-plate">
+          <img src="images/sponsor-orthovirginia.png" alt="OrthoVirginia">
+        </div>
+        <div class="sponsor-name">OrthoVirginia</div>
+      </a>
     </div>
     <div class="sponsors-cta">
       <p style="color:var(--gray);font-size:13px;margin-bottom:14px;">Interested in sponsoring the DMV All Met Cup?</p>
@@ -1273,6 +1541,16 @@ window.addEventListener('scroll', () => {
 
 // ── MOBILE MENU ──
 let menuOpen = false;
+function switchTab(team) {
+  document.querySelectorAll('.roster-tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.roster-panel').forEach(p => p.classList.remove('active'));
+  document.querySelector('#panel-' + team).classList.add('active');
+  const btn = team === 'public'
+    ? document.querySelector('.roster-tab-btn.pub')
+    : document.querySelector('.roster-tab-btn.priv');
+  btn.classList.add('active');
+}
+
 function toggleMenu() {
   menuOpen = !menuOpen;
   const links = document.querySelector('.nav-links');
