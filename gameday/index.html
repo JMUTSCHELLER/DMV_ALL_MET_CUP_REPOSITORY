@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gameday Program — DMV All Met Cup</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gold:     '#D4AF37',
+            'gold-dim': '#B8972A',
+            navy:     '#080C14',
+            'navy-2': '#0D1421',
+            'navy-3': '#111827',
+            red:      '#C8102E',
+            'blue-mid': '#1a3a6e',
+          },
+          fontFamily: {
+            display: ['"Bebas Neue"', 'sans-serif'],
+            condensed: ['"Barlow Condensed"', 'sans-serif'],
+            body: ['Barlow', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body { background: #080C14; }
+    .gold-line { height: 3px; background: linear-gradient(90deg, transparent, #D4AF37, transparent); }
+    .section-eyebrow {
+      font-family: 'Barlow Condensed', sans-serif;
+      letter-spacing: .2em;
+      font-size: .75rem;
+      color: #D4AF37;
+      text-transform: uppercase;
+    }
+    .hero-bg {
+      background: linear-gradient(160deg, #0D1421 0%, #080C14 60%, #0a1628 100%);
+      border-bottom: 3px solid #D4AF37;
+    }
+    table { border-collapse: collapse; width: 100%; }
+    thead th {
+      background: #111827;
+      color: #D4AF37;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .75rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 10px 14px;
+      text-align: left;
+    }
+    tbody tr { border-bottom: 1px solid rgba(255,255,255,0.06); }
+    tbody tr:hover { background: rgba(212,175,55,0.05); }
+    tbody td {
+      font-family: 'Barlow', sans-serif;
+      font-size: .9rem;
+      color: #C5CAD4;
+      padding: 10px 14px;
+    }
+    tbody td:first-child { color: #fff; font-weight: 600; }
+    .pos-badge {
+      display: inline-block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      background: rgba(212,175,55,0.15);
+      color: #D4AF37;
+      border: 1px solid rgba(212,175,55,0.35);
+      border-radius: 3px;
+      padding: 1px 6px;
+    }
+    .spotlight-card {
+      background: #0D1421;
+      border: 1px solid rgba(212,175,55,0.2);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .spotlight-photo {
+      background: linear-gradient(135deg, #111827 0%, #1a3a6e 100%);
+      height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .sponsor-logo-box {
+      background: #fff;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      min-height: 100px;
+    }
+    .sponsor-logo-box img { max-height: 70px; object-fit: contain; }
+  </style>
+</head>
+<body class="text-white font-body">
+
+  <!-- ── TOP NAV ── -->
+  <nav class="sticky top-0 z-50 flex items-center px-4 py-3 border-b border-white/10" style="background:#080C14;">
+    <a href="/" class="flex items-center gap-3 no-underline">
+      <img src="../images/logo.png" alt="DMV All Met Cup" class="h-10 w-auto">
+      <span class="font-display text-xl text-white tracking-widest leading-none hidden sm:block">DMV ALL MET CUP</span>
+    </a>
+    <span class="ml-auto font-condensed text-gold text-sm tracking-widest uppercase">Gameday Program</span>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="hero-bg px-4 py-14 text-center">
+    <div class="max-w-2xl mx-auto">
+      <img src="../images/logo.png" alt="DMV All Met Cup" class="h-28 mx-auto mb-6 drop-shadow-lg">
+      <p class="section-eyebrow mb-3">Official Gameday Program</p>
+      <h1 class="font-display text-5xl sm:text-7xl text-white leading-none tracking-wide mb-4">
+        DMV ALL MET CUP
+      </h1>
+      <div class="gold-line my-5 max-w-xs mx-auto"></div>
+      <p class="font-condensed text-2xl sm:text-3xl text-gold tracking-widest uppercase">
+        Public vs. Private
+      </p>
+      <p class="font-condensed text-lg text-gray-400 mt-3 tracking-wide">
+        June 20, 2026 &nbsp;·&nbsp; Bishop O'Connell High School &nbsp;·&nbsp; Arlington, VA
+      </p>
+    </div>
+  </section>
+
+  <!-- ── MATCH SCHEDULE ── -->
+  <section class="py-12 px-4 max-w-3xl mx-auto">
+    <p class="section-eyebrow text-center mb-2">Schedule</p>
+    <h2 class="font-display text-4xl text-center text-white mb-2">MATCH SCHEDULE</h2>
+    <div class="gold-line mb-8 max-w-xs mx-auto"></div>
+
+    <div class="space-y-3">
+      <div class="flex items-center justify-between bg-navy-2 rounded-lg px-5 py-4 border border-white/10">
+        <span class="font-condensed text-gold text-xl tracking-wide">4:00 PM</span>
+        <span class="font-condensed text-white text-lg tracking-wide text-center">Gates Open</span>
+        <span class="w-24"></span>
+      </div>
+      <div class="flex items-center justify-between bg-navy-2 rounded-lg px-5 py-4 border border-white/10">
+        <span class="font-condensed text-gold text-xl tracking-wide">5:00 PM</span>
+        <span class="font-condensed text-white text-lg tracking-wide text-center">Opening Ceremony</span>
+        <span class="w-24"></span>
+      </div>
+      <div class="flex items-center justify-between bg-navy-2 rounded-lg px-5 py-4 border border-gold/30 shadow-[0_0_12px_rgba(212,175,55,0.1)]">
+        <span class="font-condensed text-gold text-xl tracking-wide">5:30 PM</span>
+        <div class="text-center">
+          <span class="font-display text-2xl text-white tracking-widest">PUBLIC &nbsp;<span class="text-red">VS</span>&nbsp; PRIVATE</span>
+          <p class="font-condensed text-gray-400 text-sm tracking-wide mt-0.5">DMV All Met Cup — Main Match</p>
+        </div>
+        <span class="w-24"></span>
+      </div>
+      <div class="flex items-center justify-between bg-navy-2 rounded-lg px-5 py-4 border border-white/10">
+        <span class="font-condensed text-gold text-xl tracking-wide">7:30 PM</span>
+        <span class="font-condensed text-white text-lg tracking-wide text-center">Half-Time Activations</span>
+        <span class="w-24"></span>
+      </div>
+      <div class="flex items-center justify-between bg-navy-2 rounded-lg px-5 py-4 border border-white/10">
+        <span class="font-condensed text-gold text-xl tracking-wide">TBD</span>
+        <span class="font-condensed text-white text-lg tracking-wide text-center">Awards &amp; Closing</span>
+        <span class="w-24"></span>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-line max-w-2xl mx-auto my-2"></div>
+
+  <!-- ── PUBLIC ROSTER ── -->
+  <section class="py-12 px-4 max-w-4xl mx-auto">
+    <p class="section-eyebrow text-center mb-2">Team Roster</p>
+    <h2 class="font-display text-4xl text-center text-white mb-2">PUBLIC SCHOOLS</h2>
+    <div class="gold-line mb-8 max-w-xs mx-auto"></div>
+
+    <div class="overflow-x-auto rounded-lg border border-white/10">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Position</th>
+            <th>School</th>
+            <th>Grade</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td colspan="5" class="text-center py-10 text-gray-500 italic">
+              Roster coming soon — check back before game day.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="gold-line max-w-2xl mx-auto my-2"></div>
+
+  <!-- ── PRIVATE ROSTER ── -->
+  <section class="py-12 px-4 max-w-4xl mx-auto">
+    <p class="section-eyebrow text-center mb-2">Team Roster</p>
+    <h2 class="font-display text-4xl text-center text-white mb-2">PRIVATE SCHOOLS</h2>
+    <div class="gold-line mb-8 max-w-xs mx-auto"></div>
+
+    <!-- Goalkeepers -->
+    <p class="section-eyebrow mb-3 mt-6">Goalkeepers</p>
+    <div class="overflow-x-auto rounded-lg border border-white/10 mb-8">
+      <table>
+        <thead>
+          <tr><th>Name</th><th>Position</th><th>Hometown</th><th>Commit</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Connor Walitsky-Oliver</td>
+            <td><span class="pos-badge">GK</span></td>
+            <td>Chevy Chase, MD</td>
+            <td class="text-gray-500">—</td>
+          </tr>
+          <tr>
+            <td>William Eastright</td>
+            <td><span class="pos-badge">GK</span></td>
+            <td>Washington, D.C.</td>
+            <td>Washington &amp; Lee</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Defenders -->
+    <p class="section-eyebrow mb-3">Defenders</p>
+    <div class="overflow-x-auto rounded-lg border border-white/10 mb-8">
+      <table>
+        <thead>
+          <tr><th>Name</th><th>Position</th><th>Hometown</th><th>Commit</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Avery Christen</td>
+            <td><span class="pos-badge">CB</span> <span class="pos-badge">ST</span></td>
+            <td>Reston, VA</td>
+            <td>Mount St. Mary's</td>
+          </tr>
+          <tr>
+            <td>Campbell Knisely</td>
+            <td><span class="pos-badge">RB</span> <span class="pos-badge">CDM</span></td>
+            <td>McLean, VA</td>
+            <td class="text-gray-500">—</td>
+          </tr>
+          <tr>
+            <td>Jackson Gresham</td>
+            <td><span class="pos-badge">CB</span> <span class="pos-badge">LB</span></td>
+            <td>Darnestown, MD</td>
+            <td>Lehigh University</td>
+          </tr>
+          <tr>
+            <td>Jacob Romhilt</td>
+            <td><span class="pos-badge">CB</span> <span class="pos-badge">RB</span></td>
+            <td>McLean, VA</td>
+            <td class="text-gray-500">—</td>
+          </tr>
+          <tr>
+            <td>Oliver Saltiel</td>
+            <td><span class="pos-badge">RB</span> <span class="pos-badge">RW</span></td>
+            <td>Arlington, VA</td>
+            <td class="text-gray-500">—</td>
+          </tr>
+          <tr>
+            <td>Sullivan Carter</td>
+            <td><span class="pos-badge">RB</span> <span class="pos-badge">LW</span></td>
+            <td>Vienna, VA</td>
+            <td>William &amp; Mary</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Midfielders -->
+    <p class="section-eyebrow mb-3">Midfielders</p>
+    <div class="overflow-x-auto rounded-lg border border-white/10 mb-8">
+      <table>
+        <thead>
+          <tr><th>Name</th><th>Position</th><th>Hometown</th><th>Commit</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Charlie Waller</td>
+            <td><span class="pos-badge">CAM</span> <span class="pos-badge">ST</span></td>
+            <td>Alexandria, VA</td>
+            <td>Georgetown (DI)</td>
+          </tr>
+          <tr>
+            <td>Dijon Fosu</td>
+            <td><span class="pos-badge">CM</span> <span class="pos-badge">CDM</span></td>
+            <td>Silver Spring, MD</td>
+            <td>Yale University</td>
+          </tr>
+          <tr>
+            <td>Julian Antezana</td>
+            <td><span class="pos-badge">CM</span> <span class="pos-badge">CDM</span></td>
+            <td>Fairfax, VA</td>
+            <td>Hamilton College</td>
+          </tr>
+          <tr>
+            <td>Luke Canady</td>
+            <td><span class="pos-badge">CM</span> <span class="pos-badge">CAM</span></td>
+            <td>Falls Church, VA</td>
+            <td class="text-gray-500">—</td>
+          </tr>
+          <tr>
+            <td>Omar Medrano</td>
+            <td><span class="pos-badge">CM</span> <span class="pos-badge">LW</span></td>
+            <td>Takoma Park, MD</td>
+            <td>Loyola Maryland</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Attackers -->
+    <p class="section-eyebrow mb-3">Attackers</p>
+    <div class="overflow-x-auto rounded-lg border border-white/10 mb-8">
+      <table>
+        <thead>
+          <tr><th>Name</th><th>Position</th><th>Hometown</th><th>Commit</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Alessandro Marquez</td>
+            <td><span class="pos-badge">ST</span> <span class="pos-badge">CAM</span></td>
+            <td>Silver Spring, MD</td>
+            <td>Catholic University</td>
+          </tr>
+          <tr>
+            <td>Enzo Sosa</td>
+            <td><span class="pos-badge">ST</span> <span class="pos-badge">LW</span></td>
+            <td>Rockville, MD</td>
+            <td>UMBC</td>
+          </tr>
+          <tr>
+            <td>Shawn Estelle Jr.</td>
+            <td><span class="pos-badge">LW</span> <span class="pos-badge">LB</span></td>
+            <td>Bowie, MD</td>
+            <td>Bloomsburg University</td>
+          </tr>
+          <tr>
+            <td>Trey Tam</td>
+            <td><span class="pos-badge">LW</span> <span class="pos-badge">CAM</span></td>
+            <td>Ho Chi Minh City</td>
+            <td class="text-gray-500">—</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <div class="gold-line max-w-2xl mx-auto my-2"></div>
+
+  <!-- ── PLAYER SPOTLIGHTS ── -->
+  <section class="py-12 px-4 max-w-4xl mx-auto">
+    <p class="section-eyebrow text-center mb-2">Featured</p>
+    <h2 class="font-display text-4xl text-center text-white mb-2">PLAYER SPOTLIGHTS</h2>
+    <div class="gold-line mb-8 max-w-xs mx-auto"></div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+      <!-- Spotlight 1 -->
+      <div class="spotlight-card">
+        <div class="spotlight-photo">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-white/20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+          </svg>
+        </div>
+        <div class="p-5">
+          <p class="section-eyebrow mb-1">Spotlight</p>
+          <h3 class="font-display text-2xl text-white">PLAYER NAME</h3>
+          <p class="font-condensed text-gold text-sm tracking-wide mb-3">School Name · Position</p>
+          <p class="text-gray-400 text-sm leading-relaxed">Player bio and highlights to be added here. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </div>
+      <!-- Spotlight 2 -->
+      <div class="spotlight-card">
+        <div class="spotlight-photo">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-white/20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+          </svg>
+        </div>
+        <div class="p-5">
+          <p class="section-eyebrow mb-1">Spotlight</p>
+          <h3 class="font-display text-2xl text-white">PLAYER NAME</h3>
+          <p class="font-condensed text-gold text-sm tracking-wide mb-3">School Name · Position</p>
+          <p class="text-gray-400 text-sm leading-relaxed">Player bio and highlights to be added here. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </div>
+      <!-- Spotlight 3 -->
+      <div class="spotlight-card">
+        <div class="spotlight-photo">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-white/20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+          </svg>
+        </div>
+        <div class="p-5">
+          <p class="section-eyebrow mb-1">Spotlight</p>
+          <h3 class="font-display text-2xl text-white">PLAYER NAME</h3>
+          <p class="font-condensed text-gold text-sm tracking-wide mb-3">School Name · Position</p>
+          <p class="text-gray-400 text-sm leading-relaxed">Player bio and highlights to be added here. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="gold-line max-w-2xl mx-auto my-2"></div>
+
+  <!-- ── COLLEGE COACHES ── -->
+  <section class="py-12 px-4 max-w-4xl mx-auto">
+    <p class="section-eyebrow text-center mb-2">In Attendance</p>
+    <h2 class="font-display text-4xl text-center text-white mb-2">COLLEGE COACHES</h2>
+    <div class="gold-line mb-8 max-w-xs mx-auto"></div>
+
+    <div class="overflow-x-auto rounded-lg border border-white/10">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>University</th>
+            <th>Role</th>
+            <th>Division</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Nate Kalin</td>
+            <td>Marymount University</td>
+            <td class="text-gray-400">Head Coach</td>
+            <td><span class="pos-badge">DIII</span></td>
+          </tr>
+          <tr>
+            <td>Tommy DiNuzzo</td>
+            <td>Hampden-Sydney College</td>
+            <td class="text-gray-400">Head Coach</td>
+            <td><span class="pos-badge">DIII</span></td>
+          </tr>
+          <tr>
+            <td>Jefferson Kinney</td>
+            <td>Virginia Tech</td>
+            <td class="text-gray-400">Assistant Coach</td>
+            <td><span class="pos-badge">DI</span></td>
+          </tr>
+          <tr>
+            <td>William Chiles</td>
+            <td>Naval Academy</td>
+            <td class="text-gray-400">Assistant Coach</td>
+            <td><span class="pos-badge">DI</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-gray-500 text-sm text-center mt-4 font-condensed tracking-wide">More programs to be announced ahead of game day</p>
+  </section>
+
+  <div class="gold-line max-w-2xl mx-auto my-2"></div>
+
+  <!-- ── SPONSORS ── -->
+  <section class="py-12 px-4 max-w-4xl mx-auto">
+    <p class="section-eyebrow text-center mb-2">Official Partners</p>
+    <h2 class="font-display text-4xl text-center text-white mb-2">PRESENTED BY</h2>
+    <div class="gold-line mb-8 max-w-xs mx-auto"></div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+      <a href="https://mascrecruits.com/" target="_blank" rel="noopener" class="sponsor-logo-box hover:ring-2 hover:ring-gold/40 transition">
+        <img src="../images/sponsor-mid-atlantic-sports-consultants.png" alt="Mid-Atlantic Sports Consultants">
+      </a>
+      <a href="https://capellisport.com/" target="_blank" rel="noopener" class="sponsor-logo-box hover:ring-2 hover:ring-gold/40 transition">
+        <img src="../images/sponsor-capelli-sport.png" alt="Capelli Sport">
+      </a>
+      <a href="https://www.nxtlevelfutbol.com/" target="_blank" rel="noopener" class="sponsor-logo-box hover:ring-2 hover:ring-gold/40 transition">
+        <img src="../images/sponsor-nxt-level-futbol.png" alt="NXT Level Futbol">
+      </a>
+      <a href="https://elpollorico.com/" target="_blank" rel="noopener" class="sponsor-logo-box hover:ring-2 hover:ring-gold/40 transition">
+        <img src="../images/sponsor-el-pollo-rico.png" alt="El Pollo Rico">
+      </a>
+      <a href="https://ropw.net/" target="_blank" rel="noopener" class="sponsor-logo-box hover:ring-2 hover:ring-gold/40 transition">
+        <img src="../images/sponsor-ramp.png" alt="RAMP Optimal Performance & Wellness">
+      </a>
+      <a href="https://www.orthovirginia.com/" target="_blank" rel="noopener" class="sponsor-logo-box hover:ring-2 hover:ring-gold/40 transition">
+        <img src="../images/sponsor-orthovirginia.png" alt="OrthoVirginia">
+      </a>
+      <a href="https://truerest.com/locations/alexandria/" target="_blank" rel="noopener" class="sponsor-logo-box hover:ring-2 hover:ring-gold/40 transition">
+        <img src="../images/True Rest Alexandria Logo.jpeg" alt="True REST Float Spa – Alexandria">
+      </a>
+    </div>
+  </section>
+
+  <!-- ── QR CODE ── -->
+  <section class="py-12 px-4 text-center">
+    <p class="section-eyebrow mb-2">Share This Program</p>
+    <h2 class="font-display text-3xl text-white mb-4">SCAN TO ACCESS</h2>
+    <div class="inline-block bg-white rounded-xl p-4 shadow-lg shadow-gold/10">
+      <img src="../images/qr-gameday.png" alt="QR code — dmvallmetcup.com/gameday" class="w-44 h-44">
+    </div>
+    <p class="font-condensed text-gray-500 text-sm mt-3 tracking-wide">dmvallmetcup.com/gameday</p>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="border-t border-white/10 py-8 px-4 text-center mt-8">
+    <img src="../images/logo.png" alt="DMV All Met Cup" class="h-12 mx-auto mb-3 opacity-70">
+    <p class="font-condensed text-gray-500 text-sm tracking-widest uppercase">DMV All Met Cup · Est. 2026</p>
+    <p class="font-condensed text-gray-600 text-xs mt-1">Bishop O'Connell High School · Arlington, VA</p>
+    <a href="/" class="inline-block mt-4 font-condensed text-gold-dim text-sm tracking-wide hover:text-gold transition">← Back to dmvallmetcup.com</a>
+  </footer>
+
+</body>
+</html>
