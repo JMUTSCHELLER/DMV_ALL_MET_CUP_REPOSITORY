@@ -414,6 +414,7 @@
     padding: 2px 7px; border-radius: 3px;
   }
   .pos.p { background: var(--red); color: var(--white); }
+  #panel-public .pos.p { background: var(--blue); color: var(--white); }
   .pos.s { background: rgba(255,255,255,0.08); color: var(--gray-light); }
   .rc-honor { font-size: 11px; color: var(--gold-light); line-height: 1.5; }
   .rc-commit { font-size: 11px; color: var(--gray-light); margin-top: 5px; font-style: italic; }
@@ -1015,12 +1016,12 @@
     <h2 class="section-title">Players</h2>
     <p class="section-body" style="margin-bottom:36px;">The DMV's best — selected from public and private programs across DC, Maryland, and Virginia.</p>
     <div class="roster-tabs">
-      <button class="roster-tab-btn pub" onclick="switchTab('public')">🔵 Public Schools</button>
-      <button class="roster-tab-btn priv active" onclick="switchTab('private')">🔴 Private Schools</button>
+      <button class="roster-tab-btn pub active" onclick="switchTab('public')">🔵 Public Schools</button>
+      <button class="roster-tab-btn priv" onclick="switchTab('private')">🔴 Private Schools</button>
     </div>
 
     <!-- PUBLIC PANEL -->
-    <div class="roster-panel" id="panel-public">
+    <div class="roster-panel active" id="panel-public">
       <div class="roster-grid">
 
         <div class="roster-section-label">Goalkeepers</div>
@@ -1140,7 +1141,7 @@
     </div>
 
     <!-- PRIVATE PANEL -->
-    <div class="roster-panel active" id="panel-private">
+    <div class="roster-panel" id="panel-private">
       <div class="roster-grid">
 
         <div class="roster-section-label">Goalkeepers</div>
