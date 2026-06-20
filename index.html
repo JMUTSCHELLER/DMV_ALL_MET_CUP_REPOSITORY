@@ -36,11 +36,11 @@
     color: var(--white);
     overflow-x: hidden;
   }
-  section { scroll-margin-top: 80px; }
+  section { scroll-margin-top: 124px; }
 
   /* ── NAV ── */
   nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    position: fixed; top: 44px; left: 0; right: 0; z-index: 1000;
     background: rgba(8,12,20,0.92);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
@@ -84,7 +84,7 @@
   .hero {
     position: relative; min-height: 100vh;
     display: flex; align-items: center; justify-content: center;
-    overflow: hidden; padding-top: 96px; padding-bottom: 60px;
+    overflow: hidden; padding-top: 140px; padding-bottom: 60px;
   }
   .hero-bg {
     position: absolute; inset: 0; z-index: 0;
@@ -849,6 +849,17 @@
 </script>
 </head>
 <body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div id="announcement-bar" style="background:#0D1421; border-bottom: 1px solid rgba(184,151,42,0.35); padding: 0 16px; height: 44px; display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: nowrap; position: fixed; top: 0; left: 0; right: 0; z-index: 1001;">
+  <span style="font-family:'Barlow Condensed',sans-serif; font-size:.8rem; letter-spacing:.15em; color:#9CA3AF; text-transform:uppercase;">June 20, 2026 &nbsp;·&nbsp; Bishop O'Connell HS</span>
+  <a href="https://www.youtube.com/live/E_hlMuhNFy8?si=1YxgPyE4Bf80onqz" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:6px; font-family:'Barlow Condensed',sans-serif; font-size:.8rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; text-decoration:none; padding:5px 14px; border-radius:4px; background:var(--gold); color:#080C14; border:none;">
+    ▶ Watch Live
+  </a>
+  <a href="https://events.ticketleap.com/tickets/wwwdmvallmetcupcom/dmv-all-met-cup" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:6px; font-family:'Barlow Condensed',sans-serif; font-size:.8rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; text-decoration:none; padding:5px 14px; border-radius:4px; background:var(--red); color:#fff; border:none;">
+    🎟 Buy Tickets
+  </a>
+</div>
 
 <!-- NAV -->
 <nav id="navbar">
